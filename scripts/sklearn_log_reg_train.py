@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 import json
 import os
 from datetime import datetime
+from sklearn.metrics import RocCurveDisplay
 
 # Import mlflow
 import mlflow
@@ -103,7 +104,7 @@ print('Creating visualizations...')
 
 # Add visualizations and save for inspection
 # RocCurveDisplay.from_estimator(log_reg, X_test, y_test, name='Logistic Regression AUC Curve')
-roc_curve_display = sklearn.metrics.plot_roc_curve(log_reg, X_test, y_test)
+roc_curve_display = RocCurveDisplay.from_estimator(xgb_clf, X_test, y_test)
 fig = roc_curve_display.figure_
 plt.savefig('/mnt/artifacts/log_reg_ROC_Curve.png')
 
