@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 import json
 import os
 from datetime import datetime
+from sklearn.metrics import RocCurveDisplay
 
 # Import mlflow
 import mlflow
@@ -22,7 +23,8 @@ def create_visuals(model, param):
 
     # Add visualizations and save for inspection
     # RocCurveDisplay.from_estimator(rf, X_test, y_test, name='Random Forest AUC Curve')
-    roc_curve_display = sklearn.metrics.plot_roc_curve(model, X_test, y_test)
+    roc_curve_display = RocCurveDisplay.from_estimator(rf, X_test, y_test)
+    roc_curve_display.plot()
     fig = roc_curve_display.figure_
     plt.savefig('/mnt/artifacts/rf_ROC_Curve_n_estimators={}.png'), str(param)
 
@@ -107,7 +109,8 @@ print('Creating visualizations...')
 
 # Add visualizations and save for inspection
 # RocCurveDisplay.from_estimator(rf, X_test, y_test, name='Random Forest AUC Curve')
-roc_curve_display = sklearn.metrics.plot_roc_curve(rf, X_test, y_test)
+roc_curve_display = RocCurveDisplay.from_estimator(rf, X_test, y_test)
+roc_curve_display.plot()
 fig = roc_curve_display.figure_
 plt.savefig('/mnt/artifacts/rf_ROC_Curve.png')
 

@@ -23,7 +23,8 @@ def create_visuals(model, param):
 
     # Add visualizations and save for inspection
     # RocCurveDisplay.from_estimator(log_reg, X_test, y_test, name='Logistic Regression AUC Curve')
-    roc_curve_display = sklearn.metrics.plot_roc_curve(model, X_test, y_test)
+    roc_curve_display = RocCurveDisplay.from_estimator(model, X_test, y_test)
+    roc_curve_display.plot()
     fig = roc_curve_display.figure_
     plt.savefig('/mnt/artifacts/log_reg_ROC_Curve_C={}.png'), str(param)
 
@@ -104,7 +105,8 @@ print('Creating visualizations...')
 
 # Add visualizations and save for inspection
 # RocCurveDisplay.from_estimator(log_reg, X_test, y_test, name='Logistic Regression AUC Curve')
-roc_curve_display = RocCurveDisplay.from_estimator(xgb_clf, X_test, y_test)
+roc_curve_display = RocCurveDisplay.from_estimator(log_reg, X_test, y_test)
+roc_curve_display.plot()
 fig = roc_curve_display.figure_
 plt.savefig('/mnt/artifacts/log_reg_ROC_Curve.png')
 
