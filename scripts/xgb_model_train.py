@@ -10,6 +10,7 @@ import os
 import xgboost as xgb
 from datetime import datetime
 import pickle
+from sklearn.metrics import RocCurveDisplay
 
 # Import mlflow
 import mlflow
@@ -24,7 +25,7 @@ def create_visuals(model, param):
     # Add visualizations and save for inspection
 
     # RocCurveDisplay.from_estimator(model, X_test, y_test, name='XGBoost AUC Curve')
-    roc_curve_display = sklearn.metrics.plot_roc_curve(model, X_test, y_test)
+    roc_curve_display = RocCurveDisplay.from_estimator(xgb_clf, X_test, y_test)
     fig = roc_curve_display.figure_
     plt.savefig('/mnt/artifacts/xgb_ROC_Curve_max_depth={}.png'), str(param)
 
