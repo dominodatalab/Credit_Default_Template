@@ -49,7 +49,7 @@ def create_visuals(model, param):
 
 #read in data then split into train and test
  
-path = str('/mnt/data/Credit_Default_Model/credit_card_default.csv')
+path = str('/mnt/data/{}/credit_card_default.csv'.format(os.environ.get('DOMINO_PROJECT_NAME')))
 df = pd.read_csv(path)
 print('Read in {} rows of data'.format(df.shape[0]))
   
@@ -86,7 +86,6 @@ print('Evaluating initial model on test data...')
 preds = log_reg.predict(X_test)
  
 #View performance metrics and save them to domino stats!
-
 m_auc = np.round(roc_auc_score(y_test, log_reg.predict_proba(X_test)[:, 1]), 4)
 m_logloss = np.round(log_loss(y_test, log_reg.predict_proba(X_test)[:, 1]), 4)
 m_f1_score = np.round(f1_score(y_test, log_reg.predict(X_test)), 4)
