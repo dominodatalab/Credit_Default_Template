@@ -18,7 +18,8 @@ This template is to be used as the starting point for all credit scoring and cre
 - visualizations
 
 ## Domino Environment Definition
-FROM
+[Domino Environment](R115374714469.dkr.ecr.us-west-2.amazonaws.com/cloud-sedemo/environment:6760751fa89a19743d395951-5
+FROM)
 ```
 quay.io/domino/domino-standard-environment:ubuntu22-py3.10-r4.4-domino6.0-standard
 ```
@@ -26,7 +27,7 @@ DOCKER INSTRUCTIONS
 ```
 USER root
 RUN pip install --upgrade pandas seaborn
-RUN pip install h2o
+RUN pip install h2o streamlit eli5
 USER ubuntu
 ```
 PLUGABLE IDEs
