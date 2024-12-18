@@ -9,17 +9,18 @@ This template is to be used as the starting point for all credit scoring and cre
 - Starting Tags
 
 ## Project File Structure Structure
-- admin
+Use the Project Template directory structure to organize files for this project.
 - apps
 - documentation
 - models
+- notebooks
 - results
 - scripts
 - visualizations
 
 ## Domino Environment Definition
-[Domino Environment](R115374714469.dkr.ecr.us-west-2.amazonaws.com/cloud-sedemo/environment:6760751fa89a19743d395951-5
-FROM)
+[Domino Environment](R115374714469.dkr.ecr.us-west-2.amazonaws.com/cloud-sedemo/environment:6760751fa89a19743d395951-5)
+FROM
 ```
 quay.io/domino/domino-standard-environment:ubuntu22-py3.10-r4.4-domino6.0-standard
 ```
